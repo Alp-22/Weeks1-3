@@ -27,19 +27,32 @@ public class NewBehaviourScript : MonoBehaviour
         print(pos);*/
         if (Input.GetKey(KeyCode.W))
         {
-            objectPos.y += speed;
+            if (objectPos.y <= Camera.main.ScreenToWorldPoint(Screen.width.x))
+            { 
+                objectPos.y += speed; 
+            }
+            
         }
         if (Input.GetKey(KeyCode.S))
         {
-            objectPos.y -= speed;
+            if (objectPos.y >= -4.5)
+            {
+                objectPos.y -= speed;
+            }
         }
         if (Input.GetKey(KeyCode.A))
         {
-            objectPos.x -= speed;
+            if (objectPos.x >= -8.8)
+            {
+                objectPos.x -= speed;
+            }
         }
         if (Input.GetKey(KeyCode.D))
         {
-            objectPos.x += speed;
+                    if (objectPos.x <= 8.8)
+                    {
+                        objectPos.x += speed;
+                    }
         }
         transform.position = objectPos;
         
