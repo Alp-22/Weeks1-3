@@ -25,9 +25,10 @@ public class NewBehaviourScript : MonoBehaviour
         mouseWorldPosition.z = 0f;
         transform.position = mouseWorldPosition;
         print(pos);*/
+        print((Camera.main.orthographicSize * Screen.width / Screen.height)/2);
         if (Input.GetKey(KeyCode.W))
         {
-            if (objectPos.y <= Camera.main.ScreenToWorldPoint(Screen.width.x))
+            if (objectPos.y <= (Camera.main.orthographicSize * Screen.width / Screen.height) / 2)
             { 
                 objectPos.y += speed; 
             }
@@ -35,21 +36,21 @@ public class NewBehaviourScript : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.S))
         {
-            if (objectPos.y >= -4.5)
+            if (objectPos.y >= -(Camera.main.orthographicSize * Screen.width / Screen.height) / 2)
             {
                 objectPos.y -= speed;
             }
         }
         if (Input.GetKey(KeyCode.A))
         {
-            if (objectPos.x >= -8.8)
+            if (objectPos.x >= -(Camera.main.orthographicSize * Screen.width / Screen.height))
             {
                 objectPos.x -= speed;
             }
         }
         if (Input.GetKey(KeyCode.D))
         {
-                    if (objectPos.x <= 8.8)
+                    if (objectPos.x <= (Camera.main.orthographicSize * Screen.width / Screen.height))
                     {
                         objectPos.x += speed;
                     }
