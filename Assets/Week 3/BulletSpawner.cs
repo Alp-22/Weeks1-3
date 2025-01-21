@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletSpawner : MonoBehaviour
 {
     public GameObject prefab;
+    public GameObject square;
     public Bullet bullet;
 
     void Start()
@@ -25,9 +26,9 @@ public class BulletSpawner : MonoBehaviour
         }
     }
 
-    void Spawn()
+    public void Spawn()
     {
-        GameObject bulletGO = Instantiate(prefab);
+        GameObject bulletGO = Instantiate(prefab, transform.position, transform.rotation);
         bullet = bulletGO.GetComponent<Bullet>();
     }
 

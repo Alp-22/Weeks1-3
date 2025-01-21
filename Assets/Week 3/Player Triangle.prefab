@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 1686819506398738155}
   - component: {fileID: 3820705755242134595}
   - component: {fileID: -4214041303117454808}
-  - component: {fileID: -3768161469582167737}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: Player Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +93,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6350860449472879900}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 627040d113e41b748b30a075201f35ab, type: 3}
   m_Name: 
@@ -113,23 +112,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6350860449472879900}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e1304dacd362d44bb211e1763ab25ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   worldPosition: {x: 0, y: 0, z: 0}
---- !u!114 &-3768161469582167737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6350860449472879900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74f0a3d49fbed6c4b8549d21983434d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  worldPosition: {x: 0, y: 0, z: 0}
-  bullet: {fileID: 3820705755242134595}
