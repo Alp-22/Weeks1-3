@@ -7,8 +7,8 @@ public class MovementScriptCamera : MonoBehaviour
 {
     float speed = 0.01f;
     public Vector3 cameraPosTemp = new Vector3(0,0,0);
-    float accelerationLeft, accelerationLeftTemp, accelerationRight, accelerationRightTemp;
-    float timeLeft, timeLeftTemp, timeRight, timeRightTemp;
+    float accelerationLeft, accelerationRight;
+    float timeLeft, timeRight;
     //public GameObject player;
     // Start is called before the first frame update
     [SerializeField]
@@ -24,8 +24,6 @@ public class MovementScriptCamera : MonoBehaviour
         //Repeat the same code as the player movement script for acceleration
         accelerationLeft = cameraCurve.Evaluate(timeLeft);
         accelerationRight = cameraCurve.Evaluate(timeRight);
-        accelerationLeftTemp = cameraCurve.Evaluate(timeLeftTemp);
-        accelerationRightTemp = cameraCurve.Evaluate(timeRightTemp);
         Vector3 cameraPos = transform.position;
         //Set the cameraposition z value so it doesn't break
         cameraPos.z = -10;
@@ -34,12 +32,7 @@ public class MovementScriptCamera : MonoBehaviour
             //cameraPosTemp alters its value even if the camera stops to account for the player moving, the 15 value is as far as the player can go
             if (cameraPosTemp.x >= -15)
             {
-                timeLeftTemp += Time.deltaTime;
-                cameraPosTemp.x -= speed*accelerationLeftTemp;
-            }
-            else
-            {
-                timeLeftTemp = 0.1f;
+                cameraPosTemp.x -= speed*accelerationLeft;
             }
             //Makes it so the camera can't move again until the player centers itself on the camera
             if (cameraPos.x >= -5 && cameraPosTemp.x <= 5)
@@ -61,12 +54,7 @@ public class MovementScriptCamera : MonoBehaviour
             //Repeat of previous if statement for the other side
             if (cameraPosTemp.x <= 15)
             {
-                timeRightTemp += Time.deltaTime;
-                cameraPosTemp.x += speed*accelerationRightTemp;
-            }
-            else
-            {
-                timeRightTemp = 0.1f;
+                cameraPosTemp.x += speed*accelerationRight;
             }
             if (cameraPos.x <= 5 && cameraPosTemp.x >= -5)
             {
