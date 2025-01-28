@@ -201,7 +201,7 @@ Transform:
   m_GameObject: {fileID: 117720314}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.968, y: 2.053, z: 0}
+  m_LocalPosition: {x: 2.968, y: 2, z: 0}
   m_LocalScale: {x: -0.0791276, y: 0.0791276, z: 2.7751276}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -220,6 +220,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  curve2:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -402,7 +426,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -427,7 +451,7 @@ Transform:
   m_GameObject: {fileID: 936457477}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
