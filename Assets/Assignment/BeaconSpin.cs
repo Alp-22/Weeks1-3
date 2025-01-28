@@ -13,6 +13,7 @@ public class BeaconSpin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Spin the beacon constantly
         transform.eulerAngles += new Vector3(0, 0, 30) * Time.deltaTime;
     }
 }

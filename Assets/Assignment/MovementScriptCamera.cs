@@ -47,6 +47,7 @@ public class MovementScriptCamera : MonoBehaviour
         }
         else
         {
+            //Reset timer so that acceleration restarts when you stop
             timeLeft = 0.1f;
         }
         if (Input.GetKey(KeyCode.D))
