@@ -7,8 +7,12 @@ public class MovementScriptCamera : MonoBehaviour
 {
     float speed = 0.01f;
     public Vector3 cameraPosTemp = new Vector3(0,0,0);
+    float accelerationLeft, accelerationLeftTemp, accelerationRight, accelerationRightTemp;
+    float timeLeft, timeLeftTemp, timeRight, timeRightTemp;
     //public GameObject player;
     // Start is called before the first frame update
+    [SerializeField]
+    private AnimationCurve cameraCurve;
     void Start()
     {
 
@@ -17,32 +21,68 @@ public class MovementScriptCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //Repeat the same code as the player movement script for acceleration
+        accelerationLeft = cameraCurve.Evaluate(timeLeft);
+        accelerationRight = cameraCurve.Evaluate(timeRight);
+        accelerationLeftTemp = cameraCurve.Evaluate(timeLeftTemp);
+        accelerationRightTemp = cameraCurve.Evaluate(timeRightTemp);
         Vector3 cameraPos = transform.position;
+        //Set the cameraposition z value so it doesn't break
         cameraPos.z = -10;
         if (Input.GetKey(KeyCode.A))
         {
-            if (cameraPosTemp.x > -15)
+            //cameraPosTemp alters its value even if the camera stops to account for the player moving, the 15 value is as far as the player can go
+            if (cameraPosTemp.x >= -15)
             {
-                cameraPosTemp.x -= speed;
+                timeLeftTemp += Time.deltaTime;
+                cameraPosTemp.x -= speed*accelerationLeftTemp;
             }
-            if (cameraPos.x > -5 && cameraPosTemp.x < 5)
+            else
             {
-                cameraPos.x -= speed;
+                timeLeftTemp = 0.1f;
             }
+            //Makes it so the camera can't move again until the player centers itself on the camera
+            if (cameraPos.x >= -5 && cameraPosTemp.x <= 5)
+            {
+                timeLeft += Time.deltaTime;
+                cameraPos.x -= speed*accelerationLeft;
+            }
+            else
+            {
+                timeLeft = 0.1f;
+            }
+        }
+        else
+        {
+            timeLeft = 0.1f;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            if (cameraPosTemp.x < 15)
+            //Repeat of previous if statement for the other side
+            if (cameraPosTemp.x <= 15)
             {
-                cameraPosTemp.x += speed;
+                timeRightTemp += Time.deltaTime;
+                cameraPosTemp.x += speed*accelerationRightTemp;
             }
-            if (cameraPos.x < 5 && cameraPosTemp.x > -5)
+            else
             {
-                cameraPos.x += speed;
+                timeRightTemp = 0.1f;
+            }
+            if (cameraPos.x <= 5 && cameraPosTemp.x >= -5)
+            {
+                timeRight += Time.deltaTime;
+                cameraPos.x += speed*accelerationRight;
+            }
+            else
+            {
+                timeRight = 0.1f;
             }
         }
-        print(cameraPosTemp.x);
+        else
+        {
+            timeRight = 0.1f;
+        }
+        //print(cameraPosTemp.x);
         transform.position = cameraPos;
     }
 }
